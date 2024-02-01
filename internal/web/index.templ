@@ -74,8 +74,8 @@ templ Index(clusterStats cache.Node, nodeStats map[string]cache.Node) {
 
 templ stat(targetNode, targetStat, name, unit string, current, total float64) {
     <div class="flex flex-col flex-1 stats-bar" data-target={targetNode} data-graph={targetStat} data-unit={unit}>
-         <div class="overflow-hidden bg-border h-5 rounded-md w-full">
-             <div class="bg-white h-full rounded-md transition-all w-0 duration-200" style={F("width: %f%%", current / total * 100)} data-bar=""></div>
+         <div class="overflow-hidden bg-border h-5 rounded w-full">
+             <div class="bg-white h-full rounded transition-all w-0 duration-200" style={F("width: %f%%", current / total * 100)} data-bar=""></div>
          </div>
 
          <div class="flex justify-between">

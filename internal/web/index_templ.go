@@ -138,7 +138,7 @@ func stat(targetNode, targetStat, name, unit string, current, total float64) tem
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><div class=\"overflow-hidden bg-border h-5 rounded-md w-full\"><div class=\"bg-white h-full rounded-md transition-all w-0 duration-200\" style=\"")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><div class=\"overflow-hidden bg-border h-5 rounded w-full\"><div class=\"bg-white h-full rounded transition-all w-0 duration-200\" style=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
