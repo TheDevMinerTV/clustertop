@@ -85,7 +85,7 @@ func (u *Scraper) Scrape() (map[string]cache.Node, error) {
 
 		newNodes[node] = cache.Node{
 			CPU:    current.CPU,
-			Memory: cache.Value{V1: toGB(v)},
+			Memory: cache.Value{V1: bytesToGigaBytes(v)},
 		}
 	}
 
@@ -97,7 +97,7 @@ func (u *Scraper) Scrape() (map[string]cache.Node, error) {
 
 		newNodes[node] = cache.Node{
 			CPU:    current.CPU,
-			Memory: cache.Value{V1: current.Memory.V1, V2: toGB(v)},
+			Memory: cache.Value{V1: current.Memory.V1, V2: bytesToGigaBytes(v)},
 		}
 	}
 
@@ -110,7 +110,7 @@ func (u *Scraper) Scrape() (map[string]cache.Node, error) {
 		newNodes[node] = cache.Node{
 			CPU:             current.CPU,
 			Memory:          current.Memory,
-			NetworkReceive:  cache.Value{V1: toMbits(v), V2: maxReceiveSpeedMbits},
+			NetworkReceive:  cache.Value{V1: bytesPerSecToMegaBitsPerSecond(v), V2: maxReceiveSpeedMbits},
 			NetworkTransmit: current.NetworkTransmit,
 		}
 	}
@@ -125,7 +125,7 @@ func (u *Scraper) Scrape() (map[string]cache.Node, error) {
 			CPU:             current.CPU,
 			Memory:          current.Memory,
 			NetworkReceive:  current.NetworkReceive,
-			NetworkTransmit: cache.Value{V1: toMbits(v), V2: maxTransmitRateMbits},
+			NetworkTransmit: cache.Value{V1: bytesPerSecToMegaBitsPerSecond(v), V2: maxTransmitRateMbits},
 		}
 	}
 
@@ -222,10 +222,10 @@ func (u *Scraper) fetchNetworkTx() (map[string]float64, error) {
 	return values, nil
 }
 
-func toGB(v float64) float64 {
+func bytesToGigaBytes(v float64) float64 {
 	return v / 1024 / 1024 / 1024
 }
 
-func toMbits(v float64) float64 {
-	return v / 1024 / 1024 / 8
+func bytesPerSecToMegaBitsPerSecond(v float64) float64 {
+	return v * 8 / 1024 / 1024
 }
