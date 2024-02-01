@@ -27,7 +27,7 @@ func Index(clusterStats cache.Node, nodeStats map[string]cache.Node) templ.Compo
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\"><title>ClusterTOP</title><meta name=\"darkreader-lock\"><link rel=\"stylesheet\" href=\"/styles.css\"></head><body class=\"bg-black text-white p-6 pt-8\"><div class=\"flex flex-col gap-4 max-w-5xl mx-auto\"><h1 class=\"text-5xl font-bold -mb-4 text-center\">ClusterTOP</h1><p class=\"text-inactive text-center\">(Updates every 5 seconds)</p><div class=\"flex flex-col gap-2\"><h2 class=\"text-2xl font-bold\">Cluster</h2><div class=\"grid sm:grid-cols-2 gap-y-2 gap-x-4 w-full\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\"><title>ClusterTOP</title><meta name=\"darkreader-lock\"><link rel=\"stylesheet\" href=\"/styles.css\"></head><body class=\"bg-black text-white p-6 pt-8\"><div class=\"flex flex-col gap-4 max-w-5xl mx-auto\"><h1 class=\"text-5xl font-bold -mb-4 text-center\">ClusterTOP</h1><p class=\"text-inactive text-center\">(Updates every 5 seconds)</p><div class=\"flex flex-col gap-2\"><h2 class=\"text-3xl font-bold text-center\">Cluster</h2><div class=\"grid sm:grid-cols-2 gap-y-2 gap-x-4 w-full\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -52,14 +52,14 @@ func Index(clusterStats cache.Node, nodeStats map[string]cache.Node) templ.Compo
 			return templ_7745c5c3_Err
 		}
 		for node, stats := range nodeStats {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex flex-col gap-2\"><h2 class=\"text-2xl font-bold\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex flex-col gap-2\"><h2 class=\"text-3xl font-bold text-center\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var2 string
 			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(node)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal\web\index.templ`, Line: 37, Col: 60}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal\web\index.templ`, Line: 37, Col: 72}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 			if templ_7745c5c3_Err != nil {

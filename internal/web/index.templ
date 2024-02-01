@@ -21,7 +21,7 @@ templ Index(clusterStats cache.Node, nodeStats map[string]cache.Node) {
                 <p class="text-inactive text-center">(Updates every 5 seconds)</p>
 
                 <div class="flex flex-col gap-2">
-                    <h2 class="text-2xl font-bold">Cluster</h2>
+                    <h2 class="text-3xl font-bold text-center">Cluster</h2>
 
                     <div class="grid sm:grid-cols-2 gap-y-2 gap-x-4 w-full">
                         @stat("cluster", "cpu", "CPU", "%", clusterStats.CPU.V1, clusterStats.CPU.V2)
@@ -35,7 +35,7 @@ templ Index(clusterStats cache.Node, nodeStats map[string]cache.Node) {
 
                 for node, stats := range nodeStats {
                     <div class="flex flex-col gap-2">
-                        <h2 class="text-2xl font-bold">{node}</h2>
+                        <h2 class="text-3xl font-bold text-center">{node}</h2>
 
                         <div class="grid sm:grid-cols-2 gap-y-2 gap-x-4 w-full">
                             @stat(node, "cpu", "CPU", "%", stats.CPU.V1, stats.CPU.V2)
