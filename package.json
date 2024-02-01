@@ -1,0 +1,31 @@
+{
+  "name": "@netresearch/ldap-manager",
+  "version": "1.0.0",
+  "author": "DevMiner <devminer@devminer.xyz>",
+  "license": "MIT",
+  "packageManager": "pnpm@8.15.1",
+  "scripts": {
+    "start": "pnpm build:assets && pnpm go:start",
+    "dev": "pnpm build:assets && concurrently -n css,go \"pnpm css:dev\" \"pnpm go:dev\"",
+    "build": "pnpm build:assets && pnpm go:build",
+    "build:assets": "concurrently -n css \"pnpm css:build\"",
+    "css:build": "postcss ./internal/web/styles.css -o ./static/styles.css",
+    "css:dev": "pnpm css:build -w --verbose",
+    "go:start": "go run .",
+    "go:build": "go build",
+    "go:dev": "nodemon --signal SIGTERM -e go,html,css -w \"./**\" -x pnpm go:start"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.6",
+    "autoprefixer": "^10.4.16",
+    "concurrently": "^8.2.2",
+    "cssnano": "^6.0.1",
+    "nodemon": "^3.0.1",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^11.0.0",
+    "prettier": "^3.0.3",
+    "prettier-plugin-go-template": "^0.0.15",
+    "prettier-plugin-tailwindcss": "^0.5.6",
+    "tailwindcss": "^3.3.4"
+  }
+}

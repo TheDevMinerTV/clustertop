@@ -1,0 +1,28 @@
+image:
+  repository: ghcr.io/thedevminertv/clustertop
+  pullPolicy: Always
+  tag: "main"
+
+replicas: 3
+
+service:
+  app_port: 80
+  host: stats.k8s.devminer.xyz
+  ssl:
+    enabled: true
+    port: 443
+    issuer:
+      name: letsencrypt
+      kind: ClusterIssuer
+
+resources:
+  limits:
+    cpu: 128m
+    memory: 64Mi
+  requests:
+    cpu: 16m
+    memory: 16Mi
+
+# populated by the ArgoCD application
+devhosting:
+  appname: ''
