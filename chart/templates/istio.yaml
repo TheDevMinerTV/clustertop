@@ -1,0 +1,48 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: {{ include "app.fullname" . }}
+  labels:
+    {{- include "app.labels" . | nindent 4 }}
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - {{ .Values.service.host }}
+    {{- if .Values.service.ssl.enabled }}
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      hosts:
+        - {{ .Values.service.host }}
+      tls:
+        mode: SIMPLE
+        credentialName: {{ include "app.fullname" . }}
+    {{- end }}
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: {{ include "app.fullname" . }}
+  labels:
+    {{- include "app.labels" . | nindent 4 }}
+spec:
+  hosts:
+    - {{ .Values.service.host }}
+    - www.{{ .Values.service.host }}
+  gateways:
+    - {{ include "app.fullname" . }}
+  # The order of the routes in this list matters, the catch-all (default) route goes last.
+  http:
+    - name: primary
+      route:
+        - destination:
+            host: {{ include "app.fullname" . }}
+            port:
+              number: {{ .Values.service.app_port }}

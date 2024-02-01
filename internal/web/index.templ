@@ -1,0 +1,89 @@
+package web
+
+import (
+    "stats.k8s.devminer.xyz/internal/cache"
+)
+
+templ Index(clusterStats cache.Node, nodeStats map[string]cache.Node) {
+    <!doctype html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+            <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+            <title>ClusterTOP</title>
+            <meta name="darkreader-lock" />
+            <link rel="stylesheet" href="/styles.css" />
+        </head>
+        <body class="bg-black text-white p-6 pt-8">
+            <div class="flex flex-col gap-4 max-w-5xl mx-auto">
+                <h1 class="text-5xl font-bold -mb-4 text-center">ClusterTOP</h1>
+                <p class="text-inactive text-center">(Updates every 5 seconds)</p>
+
+                <div class="flex flex-col gap-2">
+                    <h2 class="text-2xl font-bold">Cluster</h2>
+
+                    <div class="grid sm:grid-cols-2 gap-y-2 gap-x-4 w-full">
+                        @stat("cluster", "cpu", "CPU", "%", clusterStats.CPU.V1, clusterStats.CPU.V2)
+                        @stat("cluster", "memory", "Memory", "GB", clusterStats.Memory.V1, clusterStats.Memory.V2)
+                        @stat("cluster", "network_receive", "Incoming traffic", "Mbit/s", clusterStats.NetworkReceive.V1, clusterStats.NetworkReceive.V2)
+                        @stat("cluster", "network_transmit", "Outgoing traffic", "Mbit/s", clusterStats.NetworkTransmit.V1, clusterStats.NetworkTransmit.V2)
+                    </div>
+                </div>
+
+                <hr class="border-border border-2" />
+
+                for node, stats := range nodeStats {
+                    <div class="flex flex-col gap-2">
+                        <h2 class="text-2xl font-bold">{node}</h2>
+
+                        <div class="grid sm:grid-cols-2 gap-y-2 gap-x-4 w-full">
+                            @stat(node, "cpu", "CPU", "%", stats.CPU.V1, stats.CPU.V2)
+                            @stat(node, "memory", "Memory", "GB", stats.Memory.V1, stats.Memory.V2)
+                            @stat(node, "network_receive", "Incoming traffic", "Mbit/s", stats.NetworkReceive.V1, stats.NetworkReceive.V2)
+                            @stat(node, "network_transmit", "Outgoing traffic", "Mbit/s", stats.NetworkTransmit.V1, stats.NetworkTransmit.V2)
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <script>
+                const nodes = document.querySelectorAll("[data-target]");
+
+                async function updateDom() {
+                    const response = await fetch("/api/stats").then(r => r.json());
+
+                    for (const node of nodes) {
+                        const target = node.dataset.target;
+                        const graph = node.dataset.graph;
+
+                        const value = node.querySelector("[data-bar]");
+                        const label = node.querySelector("[data-label]");
+                        const [current, total] = response[target][graph];
+
+                        value.style.width = `${current / total * 100}%`;
+                        label.innerText = `${current.toFixed(1)}/${total.toFixed(1)}`;
+                    }
+                }
+
+                setInterval(updateDom, 1000);
+            </script>
+        </body>
+    </html>
+}
+
+templ stat(targetNode, targetStat, name, unit string, current, total float64) {
+    <div class="flex flex-col flex-1 stats-bar" data-target={targetNode} data-graph={targetStat} data-unit={unit}>
+         <div class="overflow-hidden bg-border h-5 rounded-md w-full">
+             <div class="bg-white h-full rounded-md transition-all w-0 duration-200" style={F("width: %f%%", current / total * 100)} data-bar=""></div>
+         </div>
+
+         <div class="flex justify-between">
+             <span>{name}</span>
+             <div>
+                 <span data-label="">{F("%.1f", current)}/{F("%.1f", total)}</span>
+                 <span>{unit}</span>
+             </div>
+         </div>
+    </div>
+}
