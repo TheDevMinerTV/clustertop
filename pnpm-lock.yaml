@@ -7,7 +7,7 @@ settings:
 devDependencies:
   '@tailwindcss/forms':
     specifier: ^0.5.6
-    version: 0.5.7(tailwindcss@3.4.2)
+    version: 0.5.7(tailwindcss@3.4.3)
   autoprefixer:
     specifier: ^10.4.16
     version: 10.4.19(postcss@8.4.38)
@@ -37,7 +37,7 @@ devDependencies:
     version: 0.5.12(prettier@3.2.5)
   tailwindcss:
     specifier: ^3.3.4
-    version: 3.4.2
+    version: 3.4.3
 
 packages:
 
@@ -128,13 +128,13 @@ packages:
     engines: {node: '>=18'}
     dev: true
 
-  /@tailwindcss/forms@0.5.7(tailwindcss@3.4.2):
+  /@tailwindcss/forms@0.5.7(tailwindcss@3.4.3):
     resolution: {integrity: sha512-QE7X69iQI+ZXwldE+rzasvbJiyV/ju1FGHH0Qn2W3FKbuYtqp8LKcy6iSw79fVUT5/Vvf+0XgLCeYVG+UV6hOw==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.4.2
+      tailwindcss: 3.4.3
     dev: true
 
   /@trysound/sax@0.2.0:
@@ -1620,8 +1620,8 @@ packages:
       picocolors: 1.0.0
     dev: true
 
-  /tailwindcss@3.4.2:
-    resolution: {integrity: sha512-1kIzVecynNKMhhX8mPTOwTkkVHupUTMbEvk4n1ByxdM8sQTJ8fE41Y4TdORG6GmiVXHhfZ/++0hiIFJFwfadsA==}
+  /tailwindcss@3.4.3:
+    resolution: {integrity: sha512-U7sxQk/n397Bmx4JHbJx/iSOOv5G+II3f1kpLpY2QeUv5DcPdcTsYLlusZfq1NthHS1c1cZoyFmmkex1rzke0A==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
