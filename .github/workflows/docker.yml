@@ -59,7 +59,7 @@ jobs:
         run: echo ::set-output name=tag::$(echo $GITHUB_REF | sed -e 's,.*/\(.*\),\1,')
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           # push only on non-pr events
