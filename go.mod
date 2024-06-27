@@ -3,7 +3,7 @@ module stats.k8s.devminer.xyz
 go 1.21
 
 require (
-	github.com/a-h/templ v0.2.707
+	github.com/a-h/templ v0.2.731
 	github.com/barweiss/go-tuple v1.1.2
 	github.com/gofiber/fiber/v2 v2.52.4
 	github.com/rs/zerolog v1.33.0
