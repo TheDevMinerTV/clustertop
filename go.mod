@@ -5,7 +5,7 @@ go 1.23.0
 toolchain go1.25.0
 
 require (
-	github.com/a-h/templ v0.3.924
+	github.com/a-h/templ v0.3.937
 	github.com/barweiss/go-tuple v1.1.2
 	github.com/gofiber/fiber/v2 v2.52.9
 	github.com/rs/zerolog v1.34.0
@@ -23,7 +23,7 @@ require (
 	github.com/valyala/fasthttp v1.51.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	golang.org/x/exp v0.0.0-20220314205449-43aec2f8a4e7 // indirect
-	golang.org/x/sys v0.32.0 // indirect
+	golang.org/x/sys v0.34.0 // indirect
 )
 
 replace github.com/a-h/templ v0.2.543 => github.com/thedevminertv/templ v0.0.0-20240131105554-64c9eb5c4c3d
