@@ -5,7 +5,7 @@ go 1.23.0
 toolchain go1.25.0
 
 require (
-	github.com/a-h/templ v0.3.937
+	github.com/a-h/templ v0.3.943
 	github.com/barweiss/go-tuple v1.1.2
 	github.com/gofiber/fiber/v2 v2.52.9
 	github.com/rs/zerolog v1.34.0
