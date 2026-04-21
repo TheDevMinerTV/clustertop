@@ -8,7 +8,7 @@ require (
 	github.com/a-h/templ v0.3.1001
 	github.com/barweiss/go-tuple v1.1.2
 	github.com/gofiber/fiber/v2 v2.52.12
-	github.com/rs/zerolog v1.35.0
+	github.com/rs/zerolog v1.35.1
 )
 
 require (
