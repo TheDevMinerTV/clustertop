@@ -1,11 +1,11 @@
 module stats.k8s.devminer.xyz
 
-go 1.23.0
+go 1.25.0
 
 toolchain go1.26.4
 
 require (
-	github.com/a-h/templ v0.3.1001
+	github.com/a-h/templ v0.3.1020
 	github.com/barweiss/go-tuple v1.1.2
 	github.com/gofiber/fiber/v2 v2.52.13
 	github.com/rs/zerolog v1.35.1
@@ -23,7 +23,7 @@ require (
 	github.com/valyala/fasthttp v1.51.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	golang.org/x/exp v0.0.0-20220314205449-43aec2f8a4e7 // indirect
-	golang.org/x/sys v0.34.0 // indirect
+	golang.org/x/sys v0.41.0 // indirect
 )
 
 replace github.com/a-h/templ v0.2.543 => github.com/thedevminertv/templ v0.0.0-20240131105554-64c9eb5c4c3d
