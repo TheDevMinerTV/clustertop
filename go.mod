@@ -2,7 +2,7 @@ module stats.k8s.devminer.xyz
 
 go 1.25.0
 
-toolchain go1.26.4
+toolchain go1.27.0
 
 require (
 	github.com/a-h/templ v0.3.1020
